@@ -251,7 +251,7 @@ DO n = 1,nfield
 ! Read float grid values.
 !
    DO i=1,nrrow
-     READ(88, IOSTAT=ierr) (floatgrid%value(j,i,n), j=1,nrcol)
+     READ(88, IOSTAT=ierr) floatgrid%value(1:nrcol,i,n)
      IF (ierr.NE.0) THEN
        CALL SetError('Error reading grid data', error)
        CALL ErrorParam('record number', i, error)
@@ -376,7 +376,7 @@ DO n = 1,nfield
 ! Read integer grid values.
 !
   DO i=1,nrrow
-    READ(88, IOSTAT=ierr) (intgrid%value(j,i,n), j=1,nrcol)
+    READ(88, IOSTAT=ierr) intgrid%value(1:nrcol,i,n)
     IF (ierr.NE.0) THEN
       CALL SetError('Error reading grid data', error)
       CALL ErrorParam('record number', i, error)
